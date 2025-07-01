@@ -1,12 +1,16 @@
-#define buzzer 10
-void setup(){
-  pinMode(buzzer, OUTPUT);
+#define an5 A5
+#define led 9
+void setup() {
+  pinMode(an5, INPUT);
+  Serial.begin(9600);
+  pinMode(led, OUTPUT);
 }
 
-void loop(){
-  tone(buzzer,200);
-  delay(2000);
-  noTone(buzzer);
 
-  delay(1000);
+void loop() {
+  Serial.println(analogRead(an5));
+  int valor = analogRead(an5);
+  int conversao = valor/4;
+  Serial.println(conversao);
+  analogWrite(led, conversao);  
 }
